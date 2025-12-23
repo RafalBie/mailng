@@ -54,4 +54,28 @@ public class MailingRequestEntity {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public void setStatus(EmailStatus status) {
+        this.status = status;
+    }
+
+    public void setAttemptCount(int attemptCount) {
+        this.attemptCount = attemptCount;
+    }
+
+    public void setLastError(String lastError) {
+        this.lastError = lastError;
+    }
+
+    public void setSentAt(LocalDateTime sentAt) {
+        this.sentAt = sentAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public int getAttemptCount() {
+        return attemptCount;
+    }
 }

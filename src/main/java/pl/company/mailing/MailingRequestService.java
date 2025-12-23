@@ -1,6 +1,7 @@
 package pl.company.mailing;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,13 +12,17 @@ public class MailingRequestService {
     public MailingRequestService(MailingRequestRepository mailingRequestRepository) {
         this.mailingRequestRepository = mailingRequestRepository;
     }
-    public MailingRequestEntity create (String email, String message){
+
+    @Transactional
+    public MailingRequestEntity create(String email, String message){
         MailingRequestEntity entity = new MailingRequestEntity(email,message);
         return mailingRequestRepository.save(entity);
     }
+
+    @Transactional(readOnly = true)
     public List<MailingRequestEntity> getPendingEmails() {
 
-        return mailingRequestRepository.findDistinctTopByStatusOrderByCreatedAtAsc(EmailStatus.PENDING);
+        return mailingRequestRepository.findByStatus(EmailStatus.PENDING);
     }
 
 }
