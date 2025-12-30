@@ -9,4 +9,7 @@ public interface MailingRequestRepository extends JpaRepository<MailingRequestEn
 
     // select * from emails where status = ?
     List<MailingRequestEntity> findByStatus(EmailStatus status);
+
+    @Query("select * from emails where status = 'FAILED' and attempt_count < 3")
+    List<MailingRequestEntity> findFailedEmails();
 }

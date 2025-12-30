@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Slf4j
 @Component
-
 public class FailedEmailRetryScheduler {
     private final MailingRequestService mailingRequestService;
 
