@@ -24,7 +24,10 @@ public class MailingRequestService {
 
         return mailingRequestRepository.findByStatus(EmailStatus.PENDING);
     }
-
+    @Transactional(readOnly = true)
+    public List<MailingRequestEntity> getFailedEmailsToRetry() {
+        return mailingRequestRepository.findByStatus(EmailStatus.FAILED);
+    }
 }
 
 
