@@ -15,7 +15,7 @@ public class MailingStatsController {
         this.statsService = statsService;
     }
     @GetMapping("/by-status")
-    public List<EmailStatusCountDto>byStaus(){
+    public List<MailStatistic>byStaus(){
         return statsService.getByStatus();
     }
 

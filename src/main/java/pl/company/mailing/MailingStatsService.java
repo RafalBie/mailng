@@ -2,6 +2,7 @@ package pl.company.mailing;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -11,14 +12,8 @@ public class MailingStatsService {
     public MailingStatsService(MailingRequestRepository repository) {
         this.repository = repository;
     }
-    public List<EmailStatusCountDto> getByStatus() {
-        return repository.countByStatusRaw().stream()
-        .map(row -> new EmailStatusCountDto(
-                row[0] != null ? row[0].toString() : null,
-                row[1] != null ? ((Number) row[1]).longValue() : 0L
-
-        ) )
-                .toList();
+    public List<MailStatistic> getByStatus() {
+        return repository.countByStatusRaw();
     }
 
 }

@@ -1,4 +1,5 @@
 package pl.company.mailing;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ public interface MailingRequestRepository extends JpaRepository<MailingRequestEn
     @Query(value = "select * from emails where status = 'FAILED' and attempt_count < 3",nativeQuery = true)
     List<MailingRequestEntity> findFailedEmails();
     @Query(value = "select status as status, count(*) as count from emails group by status", nativeQuery = true)
-    List<Object[]> countByStatusRaw();
+    List<MailStatistic> countByStatusRaw();
 
 
 }
