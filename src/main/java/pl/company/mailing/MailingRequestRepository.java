@@ -14,13 +14,7 @@ public interface MailingRequestRepository extends JpaRepository<MailingRequestEn
     List<MailingRequestEntity> findFailedEmails();
     @Query(value = "select status as status, count(*) as count from emails group by status", nativeQuery = true)
     List<Object[]> countByStatusRaw();
-    @Query (value = """
-        select
-            sum(case when status = 'FAILED' then 1 else 0 end) as failed,
-            sum(case when status = 'SENT' then 1 else 0 end) as sent
-        from emails
-        """, nativeQuery = true)
-    Object[]summaryRaw();
+
 
 }
 // to do przygotowac endpoit zwroci dane z w/w sql

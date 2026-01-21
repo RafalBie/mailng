@@ -20,13 +20,9 @@ public class MailingStatsService {
         ) )
                 .toList();
     }
-    public EmailSummaryDto getSummary() {
-        Object[] row = repository.summaryRaw();
-        Long failed = row[0] != null ? ((Number) row[0]).longValue() : 0L;
-        Long sent = row[1] != null ? ((Number) row[1]).longValue() : 0L;
 
-        return new EmailSummaryDto(failed, sent);
-
-
-    }
 }
+// index na baze danych, nalozyc index na kolumne, indefikator w bazie danych, na postgresie
+// scrypt do do bazy z milionem recordow, zeby zapchac baze, sprawdzic wydajnosc
+//evenlisenrer, aplication ready event
+// o projekcji sql hibernet

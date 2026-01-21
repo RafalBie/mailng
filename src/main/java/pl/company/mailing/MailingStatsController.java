@@ -18,8 +18,5 @@ public class MailingStatsController {
     public List<EmailStatusCountDto>byStaus(){
         return statsService.getByStatus();
     }
-    @GetMapping("/summary")
-    public EmailSummaryDto summary() {
-        return statsService.getSummary();
-    }
+
 }
